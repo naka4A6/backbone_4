@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>backbone.jsの超簡単サンプル 2回目</title>
+	</head>
+	<body>
+		<!-- view表示用タグを埋め込む -->
+		<div id="about"></div>
+		<br>
+		<div id="memberDetail"></div>
+		
+		<!-- ここは外部ライブラリの読み込み -->
+		<script src="js/lib/jquery-2.1.4.min.js"></script>
+		<script src="js/lib/underscore-min.js"></script>
+		<script src="js/lib/backbone-min.js"></script>
+		
+		<!-- template読み込み -->
+		<!-- チーム紹介 template -->
+		<script type="text/template" id="about-template">
+			<div>
+				<div>名前: <span><%= name %></span></div>
+				<div>生年月日: <span><%= birthday %></span></div>
+				<div>ポジション: <span><%= position %></span></div>
+				<div><input type="button" class="detail" value="詳細" id="<%= index %>"></div>
+				<div><input type="button" class="edit" value="編集" id="<%= index %>"></div>
+			</div>
+		</script>
+		
+		<!-- メンバー詳細 template -->
+		<script type="text/template" id="member-detail-template">
+			<div>
+				<div>名前: <span><%= name %></span></div>
+				<div>生年月日: <span><%= birthday %></span></div>
+				<div>ポジション: <span><%= position %></span></div>
+				<div>背番号: <span><%= number %></span></div>
+				<div>趣味: <span><%= hobby %></span></div>
+				<div>今季の意気込み: <span><%= zeal %></span></div>
+			</div>
+		</script>
+		
+		<!-- メンバー詳細(編集用) template -->
+		<script type="text/template" id="edit-member-detail-template">
+			<div>
+				<div>名前: <input type="name" value="<%= name %>" id="name" ></div>
+				<div>生年月日: <input type="birthday" value="<%= birthday %>" id="birthday" ></div>
+				<div>ポジション: <input type="position" value="<%= position %>" id="position" ></div>
+				<div>背番号: <input type="number" value="<%= number %>" id="number" ></div>
+				<div>趣味: <input type="hobby" value="<%= hobby %>" id="hobby" ></div>
+				<div>今季の意気込み: <input type="zeal" value="<%= zeal %>" id="zeal" ></div>
+			</div>
+			<input type="button" value="保存" id="editBtn">
+			<input type="button" value="削除" id="deleteBtn">
+		</script>
+		
+		<!-- モデル -->
+		<script src="js/MemberModel.js"></script>
+		
+		<!-- コレクション -->
+		<script src="js/TeamCollection.js"></script>
+		
+		<!-- チーム紹介ビュー -->
+		<script src="js/TeamAboutView.js"></script>
+
+		<!-- メンバー詳細ビュー -->
+		<script src="js/MemberDetailView.js"></script>
+		
+		<!-- メンバー詳細 編集ビュー -->
+		<script src="js/MemberDetailEditView.js"></script>
+		
+		<script>
+			<!-- DOM読み込み完了後に実行 -->
+			$(function() {
+				// ビューを生成し、処理を開始する。
+				new app.TeamAboutView();
+			});
+		</script>
+
+	</body>
+</html>
